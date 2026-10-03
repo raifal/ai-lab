@@ -22,7 +22,7 @@ services:
       - ./ssh:/home/workspace/.ssh
 
     networks:
-      - vscode
+      - m1net
 
 
 #  caddy:
@@ -48,6 +48,6 @@ services:
 
 
 networks:
-  vscode:
-    driver: bridge
+  m1neet:
+    external: true
 

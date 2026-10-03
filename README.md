@@ -1,5 +1,7 @@
 # ai-lab
 
+docker network create m1net
+
 ## Ollama
 
 1. To see the gpu working:

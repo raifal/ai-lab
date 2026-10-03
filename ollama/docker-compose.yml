@@ -20,6 +20,8 @@ services:
       - OLLAMA_FLASH_ATTENTION=true
       # PARALLELE CONTEXT-VERARBEITUNG REDUZIEREN (spart VRAM-Bandbreite):
       - OLLAMA_NUM_PARALLEL=1
+    networks:
+      - m1net
     # Für NVIDIA-GPU einkommentieren:
     # deploy:
     #   resources:
@@ -41,7 +43,13 @@ services:
     depends_on:
       - ollama
     restart: unless-stopped
+    networks:
+      - m1net
 
 volumes:
   ollama_data:
   open-webui_data:
+
+networks:
+  v1net:
+    external: true
