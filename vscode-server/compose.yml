@@ -48,6 +48,6 @@ services:
 
 
 networks:
-  m1neet:
+  m1net:
     external: true
 
