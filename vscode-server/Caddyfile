@@ -1,0 +1,4 @@
+code.example.de {
+    reverse_proxy openvscode:3000
+}
+
