@@ -27,17 +27,43 @@ docker compose down && docker compose up -d
 
 3. Pull a model
 ```
-docker exec ollama pull llama3.2:3b
-dockerssh-keygen -t ed25519 -C "raifal@users.noreply.github.com"
-cat /root/.ssh/id_ed25519.pub exec ollama pull qwen2.5:3b
+# mainly for text
+docker exec ollama ollama pull llama3.2:3b
+docker exec ollama ollama pull qwen2.5:3b
+docker exec ollama ollama pull qwen3:4b
+
+
+# also for images
+docker exec ollama ollama pull gemma3:4b
+
 docker exec ollama ollama list
+
 ```
 
 4. Test it
 ```
 docker exec -it ollama ollama run llama3.2:3b
 ```
+OR
+
 http://m1:3000/
+
+OR
+```
+curl -s http://localhost:11434/api/generate -d '{
+  "model": "llama3.2:3b",
+  "prompt": "Hello",
+  "stream": false
+}' | jq '
+  {
+    tokens: .eval_count,
+    duration_s: (.eval_duration / 1e9),
+    tokens_per_second: (.eval_count / (.eval_duration / 1e9)),
+    prompt_tokens: .prompt_eval_count,
+    total_duration_s: (.total_duration / 1e9)
+  }
+'
+```
 
 ## VSCode Server
 ```
