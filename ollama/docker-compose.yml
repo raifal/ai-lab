@@ -2,8 +2,8 @@ services:
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
-    ports:
-      - "11434:11434"
+#    ports:
+#      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     # Reicht die Intel Arc iGPU Gerätedateien durch:
@@ -34,10 +34,11 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
-    ports:
-      - "3000:8080"
+#    ports:
+#      - "3000:8080"
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_URL_PREFIX=/
     volumes:
       - open-webui_data:/app/backend/data
     depends_on:

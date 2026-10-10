@@ -1,0 +1,22 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./entrypoint.sh:/entrypoint.sh:ro
+      - nginx-certs:/etc/nginx/certs
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    networks:
+      - m1net
+
+volumes:
+  nginx-certs:
+
+networks:
+  m1net:
+    external: true
