@@ -65,6 +65,10 @@ curl -s http://localhost:11434/api/generate -d '{
 '
 ```
 
+## N8n
+
+![N8n workflow example](./_assets/n8n_weather_example.png)
+
 ## VSCode Server
 ```
 sudo apt-get update
